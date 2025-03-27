@@ -8,3 +8,9 @@ I worked on the following tasks:
 
 Testing Push-Steven
 Test Push Abner
+
+Tomo:
+createPosts post form created.
+Here's the user input for each post:
+    - title
+    - description

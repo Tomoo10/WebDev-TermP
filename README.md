@@ -10,7 +10,15 @@ Testing Push-Steven
 Test Push Abner
 
 Tomo:<br />
-createPosts post form created.<br />
+Created post form in createPosts.<br />
 Here's the user input for each post:<br />
     - title<br />
+    - link<br />
     - description<br />
+    - subgroup<br />
+
+Tomo:<br />
+Created functionality in posts.ejs if user is not logged in, link to createPost is not visible.<br />
+
+Tomo: <br />
+Created method POST for /create

@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { ensureAuthenticated } from "../middleware/checkAuth";
-import { getPosts } from "../fake-db";
+import { getPosts, addPost, getSubs } from "../fake-db";
 
 router.get("/", async (req, res) => {
   const posts = await getPosts(20);
@@ -10,11 +10,15 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/create", ensureAuthenticated, (req, res) => {
-  res.render("createPosts");
+  const subs = getSubs();
+  res.render("createPosts", { subs });
 });
 
 router.post("/create", ensureAuthenticated, async (req, res) => {
-  // ⭐ TODO
+  const creator = await req.user as { id: number; uname: string; password: string };
+  const { title, link, description, subgroup } = req.body
+  addPost(title, link, creator.id, description, subgroup)
+  res.redirect("/")
 });
 
 router.get("/show/:postid", async (req, res) => {

@@ -18,7 +18,11 @@
         <a role="button" href="/posts">Home</a>
       </div>
       <div>
-        <p>Implement this page yourself. It is from subs.ejs</p>
+        <% subs.forEach((sub) => { %>
+          <div>
+            <a href="<%=`/subs/show/${sub}`%>"><%=sub%></a>
+          </div>
+        <% }) %>
       </div>
     </main>
   </body>

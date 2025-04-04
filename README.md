@@ -22,3 +22,9 @@ Created functionality in posts.ejs if user is not logged in, link to createPost 
 
 Tomo: <br />
 Created method POST for /create
+
+Abner: <br />
+/subs/list shows all subs with atleast one post. <br />
+    - each entry is appropriate GET /subs/show/:subname link <br />
+    - sorts at the .get <br />
+

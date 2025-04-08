@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>Edit Post</title>
+  </head>
+  <body>
+    <main>
+      <div class="authOptions">
+        <h1>Edit Post</h1>
+        <a role="button" href="/posts/show/<%= post.id %>">Back</a>
+      </div>
+
+      <form action="/posts/edit/<%= post.id %>" method="POST">
+        <label>Title</label>
+        <input type="text" name="title" value="<%= post.title %>" />
+
+        <label>Link</label>
+        <input type="text" name="link" value="<%= post.link %>" />
+
+        <label>Description</label>
+        <input type="text" name="description" value="<%= post.description %>" />
+
+        <label>Subgroup</label>
+        <select name="subgroup">
+          <% for (let i = 0; i < subs.length; i++) { %>
+            <option value="<%= subs[i] %>" <%= subs[i] === post.subgroup ? "selected" : "" %>>
+              <%= subs[i] %>
+            </option>
+          <% } %>
+        </select>
+
+        <button type="submit">Save</button>
+      </form>
+    </main>
+  </body>
+</html>

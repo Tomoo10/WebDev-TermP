@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { ensureAuthenticated } from "../middleware/checkAuth";
-import { getPosts, addPost, getSubs } from "../fake-db";
+import { getPosts, addPost, getSubs, getPost, editPost } from "../fake-db";
 
 router.get("/", async (req, res) => {
   const posts = await getPosts(20);
@@ -22,16 +22,27 @@ router.post("/create", ensureAuthenticated, async (req, res) => {
 });
 
 router.get("/show/:postid", async (req, res) => {
-  // ⭐ TODO
-  res.render("individualPost");
+  const postId = Number(req.params.postid);
+  const post = getPost(postId);
+  const user = req.user;
+
+  res.render("individualPost", { post, user });
 });
 
 router.get("/edit/:postid", ensureAuthenticated, async (req, res) => {
-  // ⭐ TODO
+  const postId = Number(req.params.postid);
+  const post = getPost(postId);
+  const subs = getSubs();
+
+  res.render("editPost", { post, subs });
 });
 
 router.post("/edit/:postid", ensureAuthenticated, async (req, res) => {
-  // ⭐ TODO
+  const postId = Number(req.params.postid);
+  const { title, link, description, subgroup } = req.body;
+
+  editPost(postId, { title, link, description, subgroup });
+  res.redirect(`/posts/show/${postId}`);
 });
 
 router.get("/deleteconfirm/:postid", ensureAuthenticated, async (req, res) => {

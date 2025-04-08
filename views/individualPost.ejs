@@ -14,12 +14,42 @@
   <body>
     <main>
       <div class="authOptions">
-        <h1>View Post</h1>
+        <h1><%= post.title %></h1>
         <a role="button" href="/posts">Home</a>
       </div>
-      <div>
-        <p>Implement this page yourself. It is from individualPost.ejs</p>
-      </div>
+
+      <p>Description: <%= post.description %></p>
+      <p>Posted by: <%= post.creator.uname %></p>
+      <p>Time: <%= new Date(post.timestamp).toLocaleString() %></p>
+
+      <% if (post.link) { %>
+        <p>Link: <a href="<%= post.link %>"><%= post.link %></a></p>
+      <% } %>
+
+      <hr />
+      <h2>Comments</h2>
+
+      <% if (post.comments.length === 0) { %>
+        <p>No comments yet.</p>
+      <% } %>
+
+      <% for (let i = 0; i < post.comments.length; i++) { %>
+        <div>
+          <p><%= post.comments[i].description %></p>
+          <p>By: <%= post.comments[i].creator.uname %></p>
+          <p><%= new Date(post.comments[i].timestamp).toLocaleString() %></p>
+        </div>
+        <hr />
+      <% } %>
+
+      <% if (user) { %>
+        <h3>Add a Comment</h3>
+        <form action="/posts/comment-create/<%= post.id %>" method="POST">
+          <input type="text" name="description" placeholder="Your comment" required />
+          <button type="submit">Submit</button>
+        </form>
+      <% } %>
     </main>
   </body>
 </html>
+

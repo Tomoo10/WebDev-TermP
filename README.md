@@ -29,9 +29,10 @@ Abner: <br />
     - sorts at the .get <br />
 
 Steven: <br />
-Created editPost.ejs view <br />
-Updatated individualPost.ejs <br />
-Added the show individual post get route in postRouters <br />
-Added the get and post edit routes in postRouters <br />
+I worked on the following tasks:
+- Created editPost.ejs view <br />
+- Updatated individualPost.ejs <br />
+- Added the show individual post get route in postRouters  <br />
+- Added the get and post edit routes in postRouters <br />
 
 

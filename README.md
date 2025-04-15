@@ -34,5 +34,6 @@ I worked on the following tasks:
 - Updatated individualPost.ejs <br />
 - Added the show individual post get route in postRouters  <br />
 - Added the get and post edit routes in postRouters <br />
+- added create post and delete, but issue with viewing newly created posts <br />
 
 

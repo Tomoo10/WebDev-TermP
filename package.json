@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bcittermproject": "file:",
     "ejs": "^3.1.8",
     "express": "^5.0.1",
     "express-session": "^1.17.3",

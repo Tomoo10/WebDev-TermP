@@ -1,7 +1,8 @@
 import express from "express";
 const router = express.Router();
 import { ensureAuthenticated } from "../middleware/checkAuth";
-import { getPosts, addPost, getSubs, getPost, editPost } from "../fake-db";
+import { getPosts, addPost, getSubs, getPost, editPost, addComment, deletePost} from "../fake-db";
+
 
 router.get("/", async (req, res) => {
   const posts = await getPosts(20);
@@ -15,7 +16,7 @@ router.get("/create", ensureAuthenticated, (req, res) => {
 });
 
 router.post("/create", ensureAuthenticated, async (req, res) => {
-  const creator = await req.user as { id: number; uname: string; password: string };
+  const creator = req.user as { id: number; uname: string; password: string };
   const { title, link, description, subgroup } = req.body
   addPost(title, link, creator.id, description, subgroup)
   res.redirect("/")
@@ -46,18 +47,31 @@ router.post("/edit/:postid", ensureAuthenticated, async (req, res) => {
 });
 
 router.get("/deleteconfirm/:postid", ensureAuthenticated, async (req, res) => {
-  // ⭐ TODO
+  const postId = Number(req.params.postid);
+  const post = getPost(postId);
+
+  res.render("confirmDelete", { post });
 });
 
 router.post("/delete/:postid", ensureAuthenticated, async (req, res) => {
-  // ⭐ TODO
+  const postId = Number(req.params.postid);
+  const post = getPost(postId);
+
+  if (req.body.confirm === "yes") {
+    deletePost(postId);
+    res.redirect(`/subs/show/${post.subgroup}`);
+  } else {
+    res.redirect(`/posts/show/${postId}`);
+  }
 });
 
-router.post(
-  "/comment-create/:postid",
-  ensureAuthenticated,
-  async (req, res) => {
-    // ⭐ TODO
+router.post("/comment-create/:postid", ensureAuthenticated, async (req, res) => {
+  const postId = Number(req.params.postid);
+  const user = req.user as {id: number; uname: string; password: string };
+  const description = req.body.description;
+
+  addComment(postId, user.id, description);
+  res.redirect(`/posts/show/${postId}`);
   }
 );
 

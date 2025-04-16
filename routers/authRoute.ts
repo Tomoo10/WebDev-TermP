@@ -1,5 +1,6 @@
 import express from "express";
 import passport from "../middleware/passport";
+import 'dotenv/config' /* needed to import dotenv for dev mode to work, change the .env mode to prod  or some thing not 'dev' */
 const router = express.Router();
 const devMode = process.env.MODE === "dev";
 

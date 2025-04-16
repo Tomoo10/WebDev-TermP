@@ -36,4 +36,5 @@ I worked on the following tasks:
 - Added the get and post edit routes in postRouters <br />
 - added create post and delete, but issue with viewing newly created posts <br />
 
-
+Abner: <br />
+/subs/show/:subname shows posts with subname as subgroup<br />

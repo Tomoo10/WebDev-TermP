@@ -28,3 +28,12 @@ Abner: <br />
     - each entry is appropriate GET /subs/show/:subname link <br />
     - sorts at the .get <br />
 
+Steven: <br />
+I worked on the following tasks:
+- Created editPost.ejs view <br />
+- Updatated individualPost.ejs <br />
+- Added the show individual post get route in postRouters  <br />
+- Added the get and post edit routes in postRouters <br />
+- added create post and delete, but issue with viewing newly created posts <br />
+
+

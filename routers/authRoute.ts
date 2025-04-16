@@ -4,7 +4,8 @@ const router = express.Router();
 const devMode = process.env.MODE === "dev";
 
 router.get("/login", async (req, res) => {
-  res.render("login", { devMode });
+  console.log(devMode)
+  res.render("login", { devMode: devMode });
 });
 
 router.post(

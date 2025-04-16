@@ -38,3 +38,9 @@ I worked on the following tasks:
 
 Abner: <br />
 /subs/show/:subname shows posts with subname as subgroup<br />
+
+made edits to create post/comment<br />
+- made fields required and removed description logic
+- subsgroup now test input with datalist options
+- added await to creator constructor and addpost to proprerly aquire id
+- await for comment creation aswell

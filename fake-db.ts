@@ -182,6 +182,10 @@ function addComment(post_id: number, creator: number, description: string) {
   return comment;
 }
 
+function deleteComment(id:number) {
+  delete comments[id];
+}
+
 export {
   debug,
   getUser,
@@ -193,5 +197,6 @@ export {
   deletePost,
   getSubs,
   addComment,
+  deleteComment,
   decoratePost,
 };
